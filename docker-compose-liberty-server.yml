@@ -1,0 +1,5 @@
+version: "3"
+services:
+        liberty-server:
+                image: 127.0.0.1:5000/liberty-server
+                build: liberty-server

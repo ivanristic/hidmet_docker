@@ -1,0 +1,32 @@
+version: "3"
+services:
+        hidmet:
+                image: 127.0.0.1:5000/hidmetliberty
+                ports:
+                        - "8800:9080" 
+                deploy:
+                        replicas: 3
+                        update_config:
+                                parallelism: 3
+                                delay: 10s
+                        restart_policy:
+                                condition: on-failure
+                depends_on:
+                        - mysql
+                networks:
+                        - net
+        mysql:
+                image: mysql:5.7
+                ports:
+                        - "3306:3306"
+                environment:
+                        MYSQL_ROOT_PASSWORD: "nirvana"
+                        MYSQL_DATABASE: "hidmet"
+                volumes:
+                        - mysql_data:/var/lib/mysql
+                networks:
+                        - net
+volumes:
+        mysql_data:
+networks:
+        net:
