@@ -2,6 +2,6 @@ version: "3"
 services:
         hidmet: 
                 image: 127.0.0.1:5000/hidmet
-                build: libertymy
+                build: hidmet
                 ports:
                         - "80:9080"
